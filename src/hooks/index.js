@@ -11,3 +11,5 @@ export * from './use-event-emitter.js'
 export * from './use-media-query.js'
 export * from './use-title.js'
 export * from './use-root.js'
+
+export * from './use-query-params.js'

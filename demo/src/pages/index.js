@@ -1,4 +1,18 @@
-console.log('index')
+import { useQueryParams, watchQueryParams, useState } from "ziko/hooks";
+import { tags } from 'ziko/dom'
+
+const [params, setParams] = useQueryParams()
+
+globalThis.setParams = setParams
+
+watchQueryParams(e => console.log(e))
+// setParams({page : "2"}, true)
+// setParams({lang : 'ar'}, true)
+// console.log('index')
+
+// console.log(params)
+
+// tags.p(params).mount(document.body)
 // import {tags, Flex} from 'ziko/dom'
 // import { Random } from 'ziko/math';
 // import {Switch} from 'ziko/dom'
