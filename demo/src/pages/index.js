@@ -1,93 +1,94 @@
-import {tags, Flex} from 'ziko/dom'
-import { Random } from 'ziko/math';
-import {Switch} from 'ziko/dom'
-const {svg} = tags;
+console.log('index')
+// import {tags, Flex} from 'ziko/dom'
+// import { Random } from 'ziko/math';
+// import {Switch} from 'ziko/dom'
+// const {svg} = tags;
 
-const {html, div} = tags
-
-
-globalThis.Random = Random
-const El = () => tags.section().style({
-    width : Random.int(100, 200)+'px',
-    height : Random.int(50, 100)+'px',
-    width : '120px',
-    height : '70px',
-    background : Random.color.hex(),
-    border : '2px solid black',
-    borderRadius : '10px'
-})
-globalThis.f = Flex(
-    El(),
-    El(),
-    El(),
-    El(),
-    // El(),
-    // El(),
-    // El(),
-    // El(),
-).mount(document.body).style({
-    border : '2px dotted darkblue',
-    padding : '10px',
-    width : "60vw",
-    height : '60vh',
-    gap : '10px',
-    margin : 'auto',
-    justifyContent : 'space-around'
-})
-// .vertical('space-between', 'space-around')
-.responsify('300px', true)
-
-globalThis.l = tags.input({href : "#"},'Click Me!')
-
-l.mount(document.body)
-l.on('keydown', e => console.log(e))
-
-// f.on('click', e => console.log(e))
-// f.on('dblclick', e => console.log(e))
-
-// f._onPtrDown(e => console.log({dx : e.dx, dy : e.dy, d: e.isDragging}), true)
-// f._onPtrMove(e => console.log(e.isDragging)
-//     // e.isDown && console.log({mx : e.mx, my : e.my, d: e.isDragging})
-//     , true)
-// f._onPtrUp(e => console.log({ux : e.ux, uy : e.uy}), true)
-
-globalThis.s = key => Switch({
-    key ,
-    cases : {
-        1 : tags.p('Case 1').useClient(),
-        2 : tags.p('Case 2'),
-        default : tags.p('default')
-    }
-})
-
-s(1)
-s(2)
-s(6)
+// const {html, div} = tags
 
 
-const AArrowDown = (props) => 
-    svg(
-        {
-        ...{
-         "viewBox": "0 0 24 24",
-         "fill": "none",
-         "width": 24,
-         "height": 24,
-         "stroke": "green",
-         "stroke-width": 2,
-         "stroke-linecap": "round",
-         "stroke-linejoin": "round"
-        },
-        ...props
-        },
-    tags.path({"d":"m14 12 4 4 4-4"}),
-	tags.path({"d":"M18 16V7"}),
-	tags.path({"d":"m2 16 4.039-9.69a.5.5 0 0 1 .923 0L11 16"}),
-	tags.path({"d":"M3.304 13h6.392"})
-    )
+// globalThis.Random = Random
+// const El = () => tags.section().style({
+//     width : Random.int(100, 200)+'px',
+//     height : Random.int(50, 100)+'px',
+//     width : '120px',
+//     height : '70px',
+//     background : Random.color.hex(),
+//     border : '2px solid black',
+//     borderRadius : '10px'
+// })
+// globalThis.f = Flex(
+//     El(),
+//     El(),
+//     El(),
+//     El(),
+//     // El(),
+//     // El(),
+//     // El(),
+//     // El(),
+// ).mount(document.body).style({
+//     border : '2px dotted darkblue',
+//     padding : '10px',
+//     width : "60vw",
+//     height : '60vh',
+//     gap : '10px',
+//     margin : 'auto',
+//     justifyContent : 'space-around'
+// })
+// // .vertical('space-between', 'space-around')
+// .responsify('300px', true)
 
-export default function App(){
-    globalThis.aa = AArrowDown({stroke : 'red'})
-    return aa
-}
+// globalThis.l = tags.input({href : "#"},'Click Me!')
+
+// l.mount(document.body)
+// l.on('keydown', e => console.log(e))
+
+// // f.on('click', e => console.log(e))
+// // f.on('dblclick', e => console.log(e))
+
+// // f._onPtrDown(e => console.log({dx : e.dx, dy : e.dy, d: e.isDragging}), true)
+// // f._onPtrMove(e => console.log(e.isDragging)
+// //     // e.isDown && console.log({mx : e.mx, my : e.my, d: e.isDragging})
+// //     , true)
+// // f._onPtrUp(e => console.log({ux : e.ux, uy : e.uy}), true)
+
+// globalThis.s = key => Switch({
+//     key ,
+//     cases : {
+//         1 : tags.p('Case 1').useClient(),
+//         2 : tags.p('Case 2'),
+//         default : tags.p('default')
+//     }
+// })
+
+// s(1)
+// s(2)
+// s(6)
+
+
+// const AArrowDown = (props) => 
+//     svg(
+//         {
+//         ...{
+//          "viewBox": "0 0 24 24",
+//          "fill": "none",
+//          "width": 24,
+//          "height": 24,
+//          "stroke": "green",
+//          "stroke-width": 2,
+//          "stroke-linecap": "round",
+//          "stroke-linejoin": "round"
+//         },
+//         ...props
+//         },
+//     tags.path({"d":"m14 12 4 4 4-4"}),
+// 	tags.path({"d":"M18 16V7"}),
+// 	tags.path({"d":"m2 16 4.039-9.69a.5.5 0 0 1 .923 0L11 16"}),
+// 	tags.path({"d":"M3.304 13h6.392"})
+//     )
+
+// export default function App(){
+//     globalThis.aa = AArrowDown({stroke : 'red'})
+//     return aa
+// }
 

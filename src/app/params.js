@@ -1,10 +1,7 @@
 function parseQueryParams(queryString) {
-    const params = {};
-    queryString.replace(/[A-Z0-9]+?=([\w|:|\/\.]*)/gi, (match) => {
-        const [key, value] = match.split('=');
-        params[key] = value;
-    });
-    return params;
+    return Object.fromEntries(
+            new URLSearchParams(location.search)
+        );
 }
 
 function defineParamsGetter(target ){

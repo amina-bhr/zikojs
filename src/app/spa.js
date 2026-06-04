@@ -1,4 +1,4 @@
-import { text } from "../ui/index.js";
+import { text } from "../dom/index.js";
 import { dynamicRoutesParser,routesMatcher,isDynamic } from "./routes.js";
 import { ZikoApp } from "./ziko-app.js";
 class ZikoSPA extends ZikoApp{

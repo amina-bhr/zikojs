@@ -1,5 +1,5 @@
 export * from "./math/index.js";
-export * from "./ui/index.js";
+export * from "./dom/index.js";
 export * from "./time/index.js";
 export * from "./data/index.js";
 // export * from "./reactivity/index.js"
