@@ -2,7 +2,8 @@
 title: Zikojs Overview
 description: Zikojs Overview
 sidebar:
-    label : overview
+    label : نظرة عامة
+    order : 0
 ---
 
 ZikoJS هو نظام بيئي (Ecosystem) معياري مبني بلغة JavaScript، يهدف إلى توفير لبنات أساسية منخفضة المستوى وقوية للحوسبة الرياضية، وبناء واجهات المستخدم، ومعالجة البيانات المتقدمة.

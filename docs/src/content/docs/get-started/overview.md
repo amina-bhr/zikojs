@@ -3,6 +3,7 @@ title: Zikojs Overview
 description: Zikojs Overview
 sidebar:
     label : overview
+    order : 0
 ---
 
 ZikoJS is a modular JavaScript ecosystem designed to provide powerful, low-level building blocks for mathematical computing, UI composition, and advanced data manipulation.

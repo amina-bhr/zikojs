@@ -2,7 +2,8 @@
 title: Zikojs Ecosystem
 description: Zikojs Ecosystem 
 sidebar:
-    label : Ecosystem
+    label : ecosystem
+    order : 3
 ---
 
 ## Zikojs Layers
