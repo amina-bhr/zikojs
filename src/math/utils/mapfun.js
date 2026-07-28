@@ -1,4 +1,4 @@
-const mapfun=(fun,...X)=>{
+export const mapfun=(fun,...X)=>{
     const Y=X.map(x=>{
         if(
             x===null||
@@ -40,4 +40,3 @@ const mapfun=(fun,...X)=>{
     });
    return Y.length==1? Y[0]: Y; 
 }
-export {mapfun}

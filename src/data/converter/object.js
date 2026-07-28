@@ -1,5 +1,9 @@
-import { arr2str } from "../index.js";
-import { Complex, mapfun, Matrix } from "../../math/index.js";
+// import { arr2str } from "../index.js";
+// import { Complex, mapfun, Matrix } from "../../math/index.js";
+
+import { Complex } from "../../math/complex/index.js";
+import { Matrix } from "../../math/matrix/index.js";
+import { mapfun } from "../../math/functions/utils/mapfun.js";
 
 // const obj2str=(object)=>{
 //     const recursiveToString = (obj) => {

@@ -1,4 +1,4 @@
-import { Complex } from "../../../src/math/index.js";
+import { Complex } from "../../../src/math/Complex/index.js";
 import { Matrix } from "../../../src/math/matrix/index.js";
 
 /**

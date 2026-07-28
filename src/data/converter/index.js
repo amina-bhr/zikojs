@@ -22,12 +22,12 @@
    svg2imgUrl,
    svg2img
  } from "./svg.js";
- export{
-  obj2str
- } from "./object.js"
- export{
-  arr2str
- } from "./array.js"
+//  export{
+//   obj2str
+//  } from "./object.js"
+//  export{
+//   arr2str
+//  } from "./array.js"
  export{
   json2css
  } from "./css.js"
