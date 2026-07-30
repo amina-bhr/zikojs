@@ -1,54 +1,56 @@
-import { __init__global__ } from "../__ziko__/index.js";
+// import { __init__global__ } from "../__ziko__/index.js";
 
-if(!globalThis.__Ziko__) __init__global__()
+// if (!globalThis.__Ziko__) __init__global__();
 
 export function useState(initialValue) {
     
-    const {store, index} = __Ziko__.__State__
-    __Ziko__.__State__.register({
-            value : initialValue,
-            subscribers : new Set(),
-            paused : false
-    })
-
-    let current = store.get(index);
+    const state = {
+        value: initialValue,
+        subscribers: new Set(),
+        paused: false,
+    };
 
     function getValue() {
         return {
-            value: current.value,
+            value: state.value,
             isStateGetter: () => true,
-            _subscribe: (fn) => current.subscribers.add(fn),
+            _subscribe: (fn) => {
+                state.subscribers.add(fn);
+                return () => state.subscribers.delete(fn);
+            },
         };
     }
 
     function setValue(newValue) {
-        if (current.paused) return;
+        if (state.paused) return;
+
         if (typeof newValue === "function") {
-            newValue = newValue(current.value);
+            newValue = newValue(state.value);
         }
-        if (newValue !== current.value) {
-            current.value = newValue;
-            current.subscribers.forEach(fn => fn(current.value));
-            __Ziko__.__State__.update(index, newValue)
+
+        if (!Object.is(newValue, state.value)) {
+            state.value = newValue;
+            state.subscribers.forEach((fn) => fn(state.value));
         }
     }
 
     const controller = {
-        pause: () => { current.paused = true; },
-        resume: () => { current.paused = false; },
-        clear: () => { current.subscribers.clear(); },
+        pause: () => { state.paused = true; },
+        resume: () => { state.paused = false; },
+        clear: () => { state.subscribers.clear(); },
         force: (newValue) => {
-            if (typeof newValue === "function") newValue = newValue(current.value);
-            current.value = newValue;
-            current.subscribers.forEach(fn => fn(current.value));
+            if (typeof newValue === "function") {
+                newValue = newValue(state.value);
+            }
+            state.value = newValue;
+            state.subscribers.forEach((fn) => fn(state.value));
         },
-        getSubscribers: () => new Set(current.subscribers),
+        getSubscribers: () => new Set(state.subscribers),
     };
 
     return [getValue, setValue, controller];
 }
 
-
 export const isStateGetter = (arg) => {
-    return typeof arg === 'function' && arg?.()?.isStateGetter?.();
+    return typeof arg === "function" && arg?.()?.isStateGetter?.() === true;
 };

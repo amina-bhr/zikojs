@@ -6,6 +6,15 @@ const [params, setParams] = useQueryParams()
 globalThis.setParams = setParams
 
 watchQueryParams(e => console.log(e))
+
+const [value, setVaue] = useState(0)
+
+globalThis.v = value
+globalThis.sv = setVaue
+tags.h1(value).mount()
+
+ 
+ 
 // setParams({page : "2"}, true)
 // setParams({lang : 'ar'}, true)
 // console.log('index')

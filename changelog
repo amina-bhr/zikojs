@@ -1,1 +1,5 @@
 1.1.1 : Fix exports conflicts
+1.2.0 : 
+    - Fix typo in useLocaleStorage
+    - Fix useSession storage persistance
+    - Remove HMR persistance in useState
