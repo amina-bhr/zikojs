@@ -1,5 +1,5 @@
 import { useQueryParams, watchQueryParams, useState } from "ziko/hooks";
-import { tags, Swap } from 'ziko/dom'
+import { tags, Swap, Fragment } from 'ziko/dom'
 
 const [params, setParams] = useQueryParams()
 
@@ -21,7 +21,9 @@ globalThis.s = Swap(
     h2('Comp 3').style({display : 'block'})
 ).mount()
 
- 
+globalThis.f = Fragment(tags.h1('inside fragment')) 
+
+globalThis.wr = tags.p(f)
  
 // setParams({page : "2"}, true)
 // setParams({lang : 'ar'}, true)

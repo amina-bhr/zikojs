@@ -5,3 +5,5 @@
     - Remove HMR persistance in useState
 1.3.0 : 
     Add `Swap` built in component
+1.4.0 : 
+    Add `Fragment` built in component
