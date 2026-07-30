@@ -1,5 +1,5 @@
 import { useQueryParams, watchQueryParams, useState } from "ziko/hooks";
-import { tags } from 'ziko/dom'
+import { tags, Swap } from 'ziko/dom'
 
 const [params, setParams] = useQueryParams()
 
@@ -12,6 +12,14 @@ const [value, setVaue] = useState(0)
 globalThis.v = value
 globalThis.sv = setVaue
 tags.h1(value).mount()
+
+const {h2} = tags
+
+globalThis.s = Swap(
+    h2('Comp 1').style({display : 'grid'}),
+    h2('Comp 2').style({display : 'flex'}),
+    h2('Comp 3').style({display : 'block'})
+).mount()
 
  
  

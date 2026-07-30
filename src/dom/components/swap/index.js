@@ -1,0 +1,59 @@
+import { UIElement } from "../../constructors/UIElement.js";
+import { call_with_optional_props } from '../../utils/index.js';
+
+export class UISwap extends UIElement {
+    #DISPLAYS_MAP = new WeakMap()
+    constructor({ activeIndex = 0 } = {}, ...items) {
+        super({ element: 'div' });
+        this.style({ display: 'contents' });
+        
+        this.states = {
+            activeIndex
+        };
+        
+        this.append(...items);
+        this.#setup();
+    }
+    get activeItem(){
+        return this.items[this.states.activeIndex]
+    }
+    #setup() {
+        this.items.forEach((n, i) => {
+            // Store initial display style (fallback to empty string or default)
+            const initialDisplay = n.element?.style?.display || '';
+            this.#DISPLAYS_MAP.set(n, initialDisplay);
+
+            if (i !== this.states.activeIndex) {
+                n.style({ display: 'none' });
+            }
+        });
+    }
+    next(n = 1) {
+        return this.activate(this.states.activeIndex + n);
+    }
+    previous(n = 1) {
+        return this.activate(this.states.activeIndex - n);
+    }
+    activate(index) {
+        if (!this.items.length) return this;
+
+        const currentItem = this.items.at(this.states.activeIndex);
+
+        if (currentItem) {
+            currentItem.style({ display: 'none' });
+        }
+
+        const len = this.items.length;
+        this.states.activeIndex = ((index % len) + len) % len;
+
+        const activeItem = this.items.at(this.states.activeIndex);
+        if (activeItem) {
+            const restoredDisplay = this.#DISPLAYS_MAP.get(activeItem) || 'block';
+            activeItem.style({ display: restoredDisplay === 'none' ? 'block' : restoredDisplay });
+        }
+
+        return this;
+    }
+}
+
+export const Swap = call_with_optional_props(UISwap);

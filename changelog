@@ -3,3 +3,5 @@
     - Fix typo in useLocaleStorage
     - Fix useSession storage persistance
     - Remove HMR persistance in useState
+1.3.0 : 
+    Add `Swap` built in component
