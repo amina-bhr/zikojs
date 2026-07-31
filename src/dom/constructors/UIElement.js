@@ -38,7 +38,14 @@ class UIElement extends UIElementCore{
 
     if(element)this.init(element, name, type, render)
   }
-  on(event_name, callback, {details_setter, category = 'global', isCustom = false,preventDefault = false} = {}){
+  on(event_name, callback, {details_setter, category = 'global', isCustom = false, preventDefault = false} = {}){
+    if(event_name instanceof Array) event_name.forEach(
+      event => this.on(
+        event, 
+        callback, 
+        {details_setter, category, isCustom, preventDefault}
+      )
+    )
     if(category && !this.exp.events.hasOwnProperty(category)) this.exp.events[category] = new EventController(this, category);
     isCustom && this.exp.events[category].cache.customEvents.add(event_name)
     const EVENT = this.exp.events[category];
