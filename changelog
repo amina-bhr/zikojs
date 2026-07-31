@@ -15,6 +15,6 @@
         - `math/stats`
         - `math/complex`
 1.6.0 : 
-    refactor(ui): Separate item target from component element by : 
+    Separate item target from component element by : 
         - introduce `.itemsTarget` for child item operations
         - keep `.element` dedicated to component root and mounting lifecycle
