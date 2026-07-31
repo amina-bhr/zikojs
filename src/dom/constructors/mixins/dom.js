@@ -1,8 +1,3 @@
-// import { isStateGetter } from "../../../hooks/use-state.js";
-// import { 
-//   is_camelcase,
-//   camel2hyphencase
-//  } from '../../../data/string/index.js';
 import { text } from "../../text/index.js";
 
 export function append(...ele) {
@@ -14,19 +9,30 @@ export function prepend(...ele) {
   return this;
 }
 export function insertAt(index, ...ele) {
-  if (index >= this.element.children.length) this.append(...ele);
-  else
+    const target = this.itemsTarget;
+
+    if (index >= target.items.length) return this.append(...ele);
+
     for (let i = 0; i < ele.length; i++) {
-      if (["number", "string"].includes(typeof ele[i])) ele[i] = text(ele[i]);
-      this.element?.insertBefore(ele[i].element, this.items[index].element);
-      this.items.splice(index, 0, ele[i]);
+        if (["number", "string"].includes(typeof ele[i]))
+            ele[i] = text(ele[i]);
+
+        target.element?.insertBefore(
+            ele[i].element,
+            target.items[index].element
+        );
+
+        target.items.splice(index, 0, ele[i]);
     }
-  return this;
+
+    target.maintain();
+
+    return this;
 }
 export function remove(...ele) {
   const remove = (ele) => {
     if (typeof ele === "number") ele = this.items[ele];
-    if (ele?.isUIElement) this.element?.removeChild(ele.element);
+    if (ele?.isUIElement) this.itemsTarget.element?.removeChild(ele.element);
     this.items = this.items.filter((n) => n !== ele);
   };
   for (let i = 0; i < ele.length; i++) remove(ele[i]);
@@ -37,7 +43,7 @@ export function remove(...ele) {
 }
 export function clear(){
   this?.items?.forEach(n=>n.unmount());
-  this.element.innerHTML = "";
+  this.itemsTarget.element.innerHTML = '';
   return this;
 }
 export function replaceElementWith(new_element){
@@ -49,12 +55,12 @@ export function replaceElementWith(new_element){
 }
 export function after(ui){
   if(ui?.isUIElement) ui=ui.element;
-  this.element?.after(ui)
+  this.itemsTarget.element?.after(ui)
   return this;
 }
 export function before(ui){
   if(ui?.isUIElement) ui=ui.element;
-  this.element?.before(ui)
+  this.itemsTarget.element?.before(ui)
   return this;
 }
 
@@ -62,6 +68,9 @@ export function before(ui){
 
 
 export async function __addItem__(adder, pusher, ...ele) {
+  const itemsTarget_el = this.itemsTarget.element;
+  const itemsTarget = this.itemsTarget
+
   if (this.cache.isFrozzen) {
     console.warn("You can't append new item to frozzen element");
     return this;
@@ -77,22 +86,22 @@ export async function __addItem__(adder, pusher, ...ele) {
             (newValue) => (ele[i].element.textContent = newValue),
             ele[i] 
         );
-        // this.element.appendChild(textNode);
+        // this.itemsTarget.element.appendChild(textNode);
       }
     }
     if (typeof globalThis?.Node === "function" && ele[i] instanceof globalThis?.Node) ele[i] = new this.constructor(ele[i]);
     if (ele[i]?.isUINode) {
         ele[i].cache.parent = this;
-        this.element?.[adder](ele[i].element);
-        ele[i].target = this.element;
-        this.items[pusher](ele[i]);
+        itemsTarget_el?.[adder](ele[i].element);
+        ele[i].target = this.itemsTarget.element;
+        itemsTarget.items[pusher](ele[i]);
     } 
     else if(ele[i] instanceof Promise){
       const UIEle = await ele[i]
       UIEle.cache.parent = this;
-      this.element?.[adder](UIEle.element);
-      UIEle.target = this.element;
-      this.items[pusher](UIEle)
+      itemsTarget_el?.[adder](UIEle.element);
+      UIEle.target = this.itemsTarget.element;
+      itemsTarget.items[pusher](UIEle)
     }
     else if (ele[i] instanceof Object) {
       if (ele[i]?.style) this.style(ele[i]?.style);

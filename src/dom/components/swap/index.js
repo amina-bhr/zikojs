@@ -10,16 +10,22 @@ export class UISwap extends UIElement {
         this.states = {
             activeIndex
         };
+
+        this.wrapper = new UIElement({element : 'div', class: 'wrapper-test'});
+
+        this.append(this.wrapper)
+
+        this.setItemsTarget(this.wrapper)
         
         this.append(...items);
-        this.#setup();
+        this.render();
     }
     get activeItem(){
         return this.items[this.states.activeIndex]
     }
-    #setup() {
+    render(){
         this.items.forEach((n, i) => {
-            // Store initial display style (fallback to empty string or default)
+
             const initialDisplay = n.element?.style?.display || '';
             this.#DISPLAYS_MAP.set(n, initialDisplay);
 
@@ -27,6 +33,8 @@ export class UISwap extends UIElement {
                 n.style({ display: 'none' });
             }
         });
+
+        return this;
     }
     next(n = 1) {
         return this.activate(this.states.activeIndex + n);

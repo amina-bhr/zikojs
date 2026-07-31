@@ -1,5 +1,5 @@
 import { base2base } from "../functions/conversions/index.js";
-import { accum_sum } from "../functions/stats/index.js";
+import { accum_sum } from "../stats/index.js";
 
 export class Random {
     static int(a, b){

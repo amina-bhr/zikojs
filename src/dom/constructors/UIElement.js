@@ -36,7 +36,7 @@ class UIElement extends UIElementCore{
       ViewListeners,
     );
 
-    if(element)this.init(element, name, type, render)
+    if(element)this.init(element, name, type, render);
   }
   on(event_name, callback, {details_setter, category = 'global', isCustom = false, preventDefault = false} = {}){
     if(event_name instanceof Array) event_name.forEach(
@@ -58,10 +58,22 @@ class UIElement extends UIElementCore{
     return this;
   }
   _off(event, category = 'global'){
-    this.exp.events[category].removeListener(event)
+    this.exp.events[category].removeListener(event);
+    return this
   }
   get element(){
     return this.cache.element;
+  }
+  get itemsTarget(){
+    return this.cache.itemsTarget; 
+  }
+  get itemsTargetElement(){
+    return this.itemsTarget.element;
+  }
+  setItemsTarget(parent){
+    this.cache.itemsTarget = parent;
+    this.items = parent.items;
+    return this;
   }
   isInteractive(){
     return this.cache.isInteractive;

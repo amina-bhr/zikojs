@@ -4,8 +4,6 @@ import { Random, accum_max, not, mapfun, complex, abs  } from "ziko/math";
 
 const A = abs(Math.PI, Math.PI/2, { a: 0, b : Math.PI, c : complex(1,2)})
 
-
-
 console.log(accum_max([3,1,5,2]))
 const [params, setParams] = useQueryParams()
 

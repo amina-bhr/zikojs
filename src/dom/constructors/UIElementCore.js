@@ -24,6 +24,7 @@ class UIElementCore extends UINode{
     else this.target = element?.parentElement;
     Object.assign(this.cache, {
       name,
+      itemsTarget : this,
       isInteractive : false,
       parent:null,
       isBody:false,
@@ -60,7 +61,7 @@ class UIElementCore extends UINode{
   get element(){
     return this.cache.element;
   }
-    [Symbol.iterator]() {
+  [Symbol.iterator](){
     return this.items[Symbol.iterator]();
   }
   maintain() {

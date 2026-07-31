@@ -15,26 +15,26 @@ export const binomial = (n, k) =>{
     return c;
 }
 
-export const mean = (...x) => x.reduce((a, b) => a + b) / x.length;
+// export const mean = (...x) => x.reduce((a, b) => a + b) / x.length;
 
-export const variance = (...x) => {
-  const n = x.length;
-  if (n === 0) return NaN;
-  const x_mean = mean(...x);
-  return x.reduce((sum, xi) => sum + (xi - x_mean) ** 2, 0) / n;
-};
+// export const variance = (...x) => {
+//   const n = x.length;
+//   if (n === 0) return NaN;
+//   const x_mean = mean(...x);
+//   return x.reduce((sum, xi) => sum + (xi - x_mean) ** 2, 0) / n;
+// };
 
-export const std = (...x) => Math.sqrt(variance(...x));
+// export const std = (...x) => Math.sqrt(variance(...x));
 
-export const accum_sum = (...x) => {
-  let result = [];
-  let total = 0, i, n = x.length;
-  for(i = 0; i < n ; i++){
-    total = add(total, x[i])
-    result.push(total);
-  }
-  return result;
-};
+// export const accum_sum = (...x) => {
+//   let result = [];
+//   let total = 0, i, n = x.length;
+//   for(i = 0; i < n ; i++){
+//     total = add(total, x[i])
+//     result.push(total);
+//   }
+//   return result;
+// };
 
 export const accum_prod = (...x) => {
   let result = [];
@@ -46,16 +46,16 @@ export const accum_prod = (...x) => {
   return result;
 };
 
-export const percentile = (X, p) => {
-  if (X.length === 0) 
-    return NaN;
-  let a = [...X].sort((x, y) => x - y);
-  let index = (p / 100) * (a.length - 1);
-  let i = Math.floor(index);
-  let f = index - i;
-  if (i === a.length - 1) 
-    return a[i]; 
-  return a[i] * (1 - f) + a[i + 1] * f;
-}
+// export const percentile = (X, p) => {
+//   if (X.length === 0) 
+//     return NaN;
+//   let a = [...X].sort((x, y) => x - y);
+//   let index = (p / 100) * (a.length - 1);
+//   let i = Math.floor(index);
+//   let f = index - i;
+//   if (i === a.length - 1) 
+//     return a[i]; 
+//   return a[i] * (1 - f) + a[i + 1] * f;
+// }
 
-export const median = X => percentile(X, 50); 
+// export const median = X => percentile(X, 50); 

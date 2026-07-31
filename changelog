@@ -8,8 +8,13 @@
 1.4.0 : 
     Add `Fragment` built in component
 1.5.0 : 
+    Support binding multiple events with one callback
     Add `For` built in component
     Improve Intellisence in : 
         - `math/random`
         - `math/stats`
         - `math/complex`
+1.6.0 : 
+    refactor(ui): Separate item target from component element by : 
+        - introduce `.itemsTarget` for child item operations
+        - keep `.element` dedicated to component root and mounting lifecycle
