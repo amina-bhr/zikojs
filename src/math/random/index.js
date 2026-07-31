@@ -74,9 +74,9 @@ export class Random {
     static get sample(){
         const R = this;
         return {
-            int   : (n,a,b) => Array.from({length:n}, () => R.int(a,b)),
-            float : (n,a,b) => Array.from({length:n}, () => R.float(a,b)),
-            char  : (n,upper=false) => Array.from({length:n}, () => R.char(upper)),
+            int   : (n, a, b) => Array.from({length:n}, () => R.int(a, b)),
+            float : (n, a, b) => Array.from({length:n}, () => R.float(a, b)),
+            char  : (n, upper=false) => Array.from({length:n}, () => R.char(upper)),
             bool  : n => Array.from({length:n}, () => R.bool()),
             bin   : n => Array.from({length:n}, () => R.bin()),
             oct   : n => Array.from({length:n}, () => R.oct()),
