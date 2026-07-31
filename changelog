@@ -7,3 +7,9 @@
     Add `Swap` built in component
 1.4.0 : 
     Add `Fragment` built in component
+1.5.0 : 
+    Add `For` built in component
+    Improve Intellisence in : 
+        - `math/random`
+        - `math/stats`
+        - `math/complex`

@@ -1,11 +1,18 @@
 import { useQueryParams, watchQueryParams, useState } from "ziko/hooks";
-import { tags, Swap, Fragment } from 'ziko/dom'
+import { tags, Swap, Fragment, For } from 'ziko/dom'
+import { Random, accum_max, not, mapfun, complex, abs  } from "ziko/math";
 
+const A = abs(Math.PI, Math.PI/2, { a: 0, b : Math.PI, c : complex(1,2)})
+
+
+
+console.log(accum_max([3,1,5,2]))
 const [params, setParams] = useQueryParams()
 
 globalThis.setParams = setParams
 
 watchQueryParams(e => console.log(e))
+console.log(not(0,1,1))
 
 const [value, setVaue] = useState(0)
 
@@ -21,10 +28,19 @@ globalThis.s = Swap(
     h2('Comp 3').style({display : 'block'})
 ).mount()
 
-globalThis.f = Fragment(tags.h1('inside fragment')) 
+globalThis.f = Fragment(tags.td('inside fragment')) 
 
-globalThis.wr = tags.p(f)
- 
+globalThis.wr = tags.table(
+    tags.tr(
+        f
+    )
+).mount()
+
+const items = ['A', 'B', 'C', 'D']
+globalThis.f = tags.ul(For({
+    each : items,
+    mapFn : (item, i)=> tags.li(item, i)
+})).mount()
 // setParams({page : "2"}, true)
 // setParams({lang : 'ar'}, true)
 // console.log('index')

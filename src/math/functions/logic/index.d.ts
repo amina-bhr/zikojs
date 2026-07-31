@@ -1,11 +1,53 @@
 import type { Complex } from "../../complex/index.d.ts";
-// import type { Matrix } from "../../matrix/index.d.ts";
 import { Matrix } from '../../../../src/math/matrix/index.js'
 
-export declare const not: (x: 0 | 1 | Complex | Matrix) => 0 | 1 | Complex | Matrix;
-export declare const and: (...x: (0 | 1 | Complex | Matrix)[]) => 0 | 1 | Complex | Matrix;
-export declare const or: (...x: (0 | 1 | Complex | Matrix)[]) => 0 | 1 | Complex | Matrix;
-export declare const xor: (...x: (0 | 1 | Complex | Matrix)[]) => 0 | 1 | Complex | Matrix;
-export declare const nand: (...x: (0 | 1 | Complex | Matrix)[]) => 0 | 1 | Complex | Matrix;
-export declare const nor: (...x: (0 | 1 | Complex | Matrix)[]) => 0 | 1 | Complex | Matrix;
-export declare const xnor: (...x: (0 | 1 | Complex | Matrix)[]) => 0 | 1 | Complex | Matrix;
+export type LogicValue = 0 | 1 | Complex | Matrix;
+
+/**
+ * Logical NOT operation.
+ */
+export declare const not: (
+    x: LogicValue
+) => LogicValue;
+
+/**
+ * Logical AND operation.
+ */
+export declare const and: (
+    ...x: LogicValue[]
+) => LogicValue;
+
+/**
+ * Logical OR operation.
+ */
+export declare const or: (
+    ...x: LogicValue[]
+) => LogicValue;
+
+/**
+ * Logical XOR operation.
+ */
+export declare const xor: (
+    ...x: LogicValue[]
+) => LogicValue;
+
+/**
+ * Logical NAND operation.
+ */
+export declare const nand: (
+    ...x: LogicValue[]
+) => LogicValue;
+
+/**
+ * Logical NOR operation.
+ */
+export declare const nor: (
+    ...x: LogicValue[]
+) => LogicValue;
+
+/**
+ * Logical XNOR operation.
+ */
+export declare const xnor: (
+    ...x: LogicValue[]
+) => LogicValue;

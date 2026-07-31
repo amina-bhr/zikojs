@@ -1,4 +1,4 @@
-const not = x => {
+export const not = x => {
     if(x.isComplex?.()) return new x.constructor(not(x.a), not(x.b))
     if(x.isMatrix?.()) return new x.constructor(x.rows, x.cols, x.arr.flat(1).map(not))
     return + !x;
