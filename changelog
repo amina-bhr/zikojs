@@ -18,3 +18,8 @@
     Separate item target from component element by : 
         - introduce `.itemsTarget` for child item operations
         - keep `.element` dedicated to component root and mounting lifecycle
+1.6.1
+    - Preserve CSS-defined display values when swapping items in `Swap` component by : 
+        - Use getComputedStyle() instead of inline style lookup to detect initial display values
+        - Defer initial render with requestAnimationFrame to ensure CSS is applied before measuring
+    - Improve `data/string` and `data/parser` Intellisence

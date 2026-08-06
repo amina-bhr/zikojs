@@ -12,7 +12,9 @@ export class UISwap extends UIElement {
         };
         
         this.append(...items);
-        this.render();
+        requestAnimationFrame(() => {
+            this.render();
+        });
     }
     get activeItem(){
         return this.items[this.states.activeIndex]
@@ -20,13 +22,16 @@ export class UISwap extends UIElement {
     render() {
         this.items.forEach((n, i) => {
 
-            const initialDisplay = n.element?.style?.display || '';
+            const initialDisplay = getComputedStyle(n.element).display;
             this.#DISPLAYS_MAP.set(n, initialDisplay);
 
             if (i !== this.states.activeIndex) {
                 n.style({ display: 'none' });
             }
         });
+    }
+    get DS(){
+        return this.#DISPLAYS_MAP
     }
     next(n = 1) {
         return this.activate(this.states.activeIndex + n);

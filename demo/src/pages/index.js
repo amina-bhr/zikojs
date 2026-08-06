@@ -1,7 +1,7 @@
 import { useQueryParams, watchQueryParams, useState } from "ziko/hooks";
 import { tags, Swap, Fragment, For } from 'ziko/dom'
 import { Random, accum_max, not, mapfun, complex, abs  } from "ziko/math";
-
+import './index.css'
 const A = abs(Math.PI, Math.PI/2, { a: 0, b : Math.PI, c : complex(1,2)})
 
 console.log(accum_max([3,1,5,2]))
@@ -21,9 +21,9 @@ tags.h1(value).mount()
 const {h2} = tags
 
 globalThis.s = Swap(
-    h2('Comp 1').style({display : 'grid'}),
-    h2('Comp 2').style({display : 'flex'}),
-    h2('Comp 3').style({display : 'block'})
+    h2('Comp 1').setAttr({class : 'grid'}),
+    h2('Comp 2').setAttr({class : 'flex'}),
+    h2('Comp 3').setAttr({class : 'block'})
 ).mount()
 
 globalThis.f = Fragment(tags.td('inside fragment')) 
